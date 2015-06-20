@@ -31,10 +31,21 @@
 
 <template name="task">
 <!-- If checked checkedbox is checked then set class as checked -->
-  <li class="{{#if checked}}checked{{/if}}">
+  <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
+
+  {{#if isOwner}}
     <button class="delete">&times;</button>
 
     <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+
+      <button class="toggle-private">
+        {{#if private}}
+          Private
+        {{else}}
+          Public
+        {{/if}}
+      </button>
+    {{/if}}
 
     <span class="text"><strong>{{username}}</strong> -{{text}}</span>
   </li>
